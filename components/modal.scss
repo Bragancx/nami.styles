@@ -1,0 +1,112 @@
+@import '../utilities/mixins.scss';
+
+// Modal parent class.
+.modal {
+    visibility: hidden;
+    display: block;
+    
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2022;
+    overflow: hidden;
+
+    padding: 3rem;
+    
+    transition: $transition-time;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+    &.active > .modal-background { opacity: 1 !important; }
+    &.active > .modal-card,
+    &.active > .modal-content { top: 0 !important; }
+}
+
+// Background, it's child of .modal
+.modal-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+%modal-wrapper {
+    position: relative;
+    top: -3rem;
+    margin: 0 auto;
+    max-width: 768px;
+    max-height: 100%;
+    transition: calc($transition-time * 2);
+}
+
+// Simple modal style
+.modal-content {
+    @extend %modal-wrapper;
+    overflow: auto;
+}
+
+// Classic modal structure (head, body and foot).
+.modal-card {
+    @extend %modal-wrapper;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    & > .modal-card-header,
+    & > .modal-card-footer {
+        position: relative;
+        
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        
+        padding: 1.5rem;
+        background-color: #f5f5f5;
+    }
+    & > .modal-card-body {
+        display: block;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 1.5rem;
+        
+        overflow: auto;
+        background: #fff;
+    }
+}
+
+.modal-card-header {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-bottom: 1px solid #dbdbdb;
+}
+.modal-card-footer {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-top: 1px solid #dbdbdb;
+}
+
+// Modal sizes
+.modal.sm {
+    max-width: 640px;
+}
+.modal.md {
+    max-width: 768px;
+}
+.modal.lg {
+    max-width: 1024px;
+}
+.modal.xl {
+    max-width: 1280px;
+}
+
+@media only screen and (max-width: 768px) {
+    .modal {
+        padding: 1rem;
+    }
+}

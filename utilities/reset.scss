@@ -1,0 +1,66 @@
+// Box sizing
+html {
+    box-sizing: border-box;
+}
+* {
+    &,
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+// Media
+img,
+video {
+    height: auto;
+    max-width: 100%;
+}
+
+// Iframe
+iframe {
+    border: 0;
+}
+
+// Table
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+* {
+    -webkit-appearance: none;
+    position: static;
+    
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    
+    list-style: none;
+    text-decoration: none;
+    background: transparent;
+
+    transition: 0s;
+}
+a:active {
+    color: initial;
+}
+
+hr {
+    display: block;
+    width: 100%;
+
+    border: 1px;
+    border-style: inset;
+    border-color: #c0c0c0;
+    margin-block: 4px;
+
+}
+
+h1 { font-weight: normal; font-size: 2.50rem; }
+h2 { font-weight: normal; font-size: 2.25rem; }
+h3 { font-weight: normal; font-size: 2.00rem; }
+h4 { font-weight: normal; font-size: 1.75rem; }
+h5 { font-weight: normal; font-size: 1.50rem; }
+h6 { font-weight: normal; font-size: 1.25rem; }

@@ -1,0 +1,32 @@
+.btn,
+.button {
+    display: inline-block;
+    padding: 0rem 1rem;
+    border-radius: var(--border-radius);
+    
+    text-align: center;
+    font-size: 1rem;
+    line-height: 2.25rem;
+
+    // Configs to reset the element.
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    transition: 0.15s;
+
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}

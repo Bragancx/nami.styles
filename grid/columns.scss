@@ -1,0 +1,123 @@
+@use "sass:math";
+@import '../utilities/mixins.scss';
+
+$columns-per-row: 12;
+$columns-gap: 0.25rem;
+$gaps: 8;
+
+// Row for one line.
+.row {
+    display: flex;   
+    margin-inline: #{-$columns-gap};
+    flex: 1 1 0;
+}
+
+// Row for multiple lines.
+.rows {
+    display: flex;
+    margin-inline: #{-$columns-gap};
+    flex-wrap: wrap;
+    flex: 1 1 0;
+}
+
+// When gap is 0, no spacing between columns.
+.row,
+.rows {
+    // Remove all gaps
+    &.no-gap {
+        margin-inline: 0;
+        & > .column { padding: 0;}
+    }
+    
+    // Gap sizes.
+    @for $i from 0 through $gaps {
+        &.g\.#{$i},
+        &.gap\.#{$i} {
+            margin-inline: -#{ $i * calc($columns-gap / 2) };
+            & > .column {
+                padding: #{ $i * calc($columns-gap / 2) };
+            }
+        }
+        &.g-x\.#{$i},
+        &.g-h\.#{$i},
+        &.gap-x\.#{$i},
+        &.gap-h\.#{$i} {
+            margin-inline: -#{ $i * calc($columns-gap / 2) };
+            & > .column {
+                padding-inline: #{ $i * calc($columns-gap /2) };
+            }
+        }
+        &.g-y\.#{$i} > .column,
+        &.g-v\.#{$i} > .column,
+        &.g-y\.#{$i} > .column,
+        &.gap-v\.#{$i} > .column {
+            padding-block: #{ $i * calc($columns-gap /2) };
+        }
+    }
+}
+
+// Every column class extend this.
+%default {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: $columns-gap;
+}
+
+// Default column.
+.col, .column {
+    @extend %default;
+    -webkit-box-flex: 1;
+    flex: 1 1 0;
+    max-width: 100%;
+
+    &\.auto {
+        @extend %default;
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+    }
+    @for $i from 0 through $columns-per-row {
+        &\.#{$i} {
+            @extend %default;
+            -webkit-box-flex: 0;
+            -ms-flex: (calc(100% / $columns-per-row) * $i);
+            flex: 0 0 (calc(100% / $columns-per-row) * $i);
+            max-width: (calc(100% / $columns-per-row) * $i);
+        }
+    }
+}
+
+@each $prefix in (sm,md,lg,xl,xxl) {
+    
+    // Default values.
+    .#{$prefix}\:col, .#{$prefix}\:column {
+        &\.auto {
+            @extend %default;
+        }
+        @for $i from 0 through $columns-per-row {
+            &\.#{$i} {
+                @extend %default;
+            }
+        }
+    }
+
+    // Define the values in right resolutions
+    @include media-breakpoint($prefix) {
+        .#{$prefix}\:col, .#{$prefix}\:column {
+            &\.auto {
+                flex: 0 0 auto;
+                width: auto;
+                max-width: 100%;
+            }
+            @for $i from 0 through $columns-per-row {
+                &\.#{$i} {
+                    -webkit-box-flex: 0;
+                    -ms-flex: (calc(100% / $columns-per-row) * $i);
+                    flex: 0 0 (calc(100% / $columns-per-row) * $i);
+                    max-width: (calc(100% / $columns-per-row) * $i);
+                }
+            }
+        }
+    }
+}

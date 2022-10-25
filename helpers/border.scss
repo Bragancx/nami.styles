@@ -1,0 +1,29 @@
+@for $i from 0 through 6 {
+    .border\.#{$i},
+    .border-width\.#{$i} {
+        border-width: #{$i * 1px} !important;
+        border-style: solid !important;
+    }
+}
+.border-radius\.0 {
+    $value: 0 !important;
+    -webkit-border-radius: #{$value} !important;
+    -moz-border-radius: #{$value} !important;
+    border-radius: #{$value} !important;
+}
+.border-radius\.default {
+    -webkit-border-radius: var(--border-radius) !important;
+    -moz-border-radius: var(--border-radius) !important;
+    border-radius: var(--border-radius) !important;
+}
+.border-radius\.rounded,
+.border\.rounded {
+    $value: 50% !important;
+    -webkit-border-radius: #{$value};
+    -moz-border-radius: #{$value};
+    border-radius: #{$value};
+}
+.border-radius\.rounded-full,
+.border\.rounded-full {
+    border-radius: 100% !important;
+}

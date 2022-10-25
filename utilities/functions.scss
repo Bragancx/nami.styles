@@ -1,0 +1,14 @@
+@function set-color-darken($color, $amount) {
+    $color: adjust-color($color, $blue: calc(1 * $amount));
+    $color: saturate($color, calc(0.25 * $amount));
+    @return darken($color, $amount);
+}
+
+@function set-font-color($background-color) {
+    @if lightness($background-color) > 50% {
+        @return var(--black);
+    }
+    @else {
+        @return var(--white);
+    }
+}

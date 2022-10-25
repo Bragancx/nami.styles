@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './variables';
+
+:root {
+    // The mulitplier of the margins in classes like mar.0, mar.1, mar.2...
+    --margins-multiplier: #{$margins-multiplier};
+
+    // The multiplier of the margin in the classes like pad.0, pad.1, pad.2...
+    --paddings-multiplier: #{$paddings-multiplier};
+
+    // The multiplier of the text-size in classes like text.0, text.1, text.2...
+    --text-size-multiplier: #{$text-size-multiplier};
+
+    // Default transition time for everything.
+    --transition-time: #{$transition-time};
+
+    // Default border-radius for buttons, inputs, modals, cards, etc...
+    --border-radius: #{$border-radius};
+    
+    @each $name, $hex in $colors {
+        --#{$name}: #{$hex};
+    };
+};

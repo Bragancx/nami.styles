@@ -1,0 +1,25 @@
+.collapse:not(.show) {
+    height: 0 !important;
+}
+.collapse {
+    display: block;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.4s ease-out;
+
+    &.speed\.0 {
+        transition: 0;
+    }
+    @for $i from 1 through 6 {
+        &.speed\.#{$i} {
+            transition: height ($i * 0.1s) ease-out;
+        }
+    }
+}
+.collapse.show {
+    visibility: visible;
+    display: block;
+}
+*[data-toggle=collapse] * {
+    pointer-events: none;
+}

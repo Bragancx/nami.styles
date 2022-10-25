@@ -1,0 +1,39 @@
+$screens: (sm: 641px, md: 769px, lg: 1025px, xl: 1281px, xxl: 1537px);
+
+@mixin sm {
+    @media only screen and (min-width: map-get($screens,small)) {
+        @content;
+    }
+}
+@mixin md {
+    @media only screen and (min-width: map-get($screens,medium)) {
+        @content;
+    }
+}
+@mixin lg {
+    @media only screen and (min-width: map-get($screens,large)) {
+        @content;
+    }
+}
+@mixin xl {
+    @media only screen and (min-width: map-get($screens,xlarge)) {
+        @content;
+    }
+}
+@mixin xxl {
+    @media only screen and (min-width: map-get($screens,huge)) {
+        @content;
+    }
+}
+
+@mixin media-breakpoint($size) {
+    @media (min-width: map-get($screens,$size)) {
+        @content;
+    }
+}
+
+@mixin prefix-to-class($prefix,$classname) {
+    .#{$prefix + $classname} {
+        @content;
+    }
+}

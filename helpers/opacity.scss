@@ -1,0 +1,15 @@
+// Opacity multiplier = 100 / multiplier;
+$opacity-multiplier: 10;
+@for $i from 0 through calc(100 / $opacity-multiplier) {
+    $current-value: calc($i / (100 / $opacity-multiplier));
+    .opacity\:#{calc($i * $opacity-multiplier)} { opacity: $current-value !important; }
+    
+    .all\:opacity\:#{calc($i * $opacity-multiplier)}:hover,
+    .hover\:opacity\:#{calc($i * $opacity-multiplier)}:hover { opacity: $current-value !important; }
+    
+    .all\:opacity\:#{calc($i * $opacity-multiplier)}:active,
+    .active\:opacity\:#{calc($i * $opacity-multiplier)}:active { opacity: $current-value !important; }
+    
+    .all\:opacity\:#{calc($i * $opacity-multiplier)}:focus,
+    .focus\:opacity\:#{calc($i * $opacity-multiplier)}:focus { opacity: $current-value !important; }
+}

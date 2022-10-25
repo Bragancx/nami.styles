@@ -1,0 +1,96 @@
+@import "../utilities/mixins";
+
+$sidebar-sizes: (sm: 96px, md: 160px, lg: 208px, xl: 256px, xxl: 304px);
+$prefixs: (sm,md,lg,xl,xxl);
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    z-index: 1;
+    transition: 0.2s;
+    @each $size-name, $size-value in $sidebar-sizes {
+        &\.#{$size-name} {
+            width: 100%;
+            max-width: $size-value;
+        }
+    }
+    @each $prefix in $prefixs {
+        @include media-breakpoint($prefix) {
+            @each $size-name, $size-value in $sidebar-sizes {
+                &\.#{$size-name} {
+                    width: 100%;
+                    max-width: $size-value;
+                }
+            }
+        }
+    }
+}
+.sidebar .nav-item {
+    position: relative;
+    font-size: .85rem;
+}
+.sidebar .nav-link {
+    display: block;
+    padding: 1rem;
+    padding-right: 3rem !important;
+    color: var(--gray-400);
+    transition: 0.1s;
+
+    cursor: pointer;
+}
+.sidebar .nav-link:hover {
+    background: rgba(255,255,255,0.05);
+}
+.sidebar .nav-link[data-toggle=collapse]::after {
+    content: "\f105";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 700;
+    font-size: 1rem;
+    
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    
+    transform: translate(0,-50%);
+}
+.sidebar .nav-link[data-expanded=true][data-toggle=collapse]::after {
+    content: "\f107";
+}
+#sidebar {
+    transition: right 0.2s, width 0s 0.2s;
+}
+#sidebar.toggled {
+    width: auto !important;
+    .nav-item > .collapse {
+        min-width: 150px;
+        position: absolute;
+        left: 100%;
+        top: 0;
+    }
+    .sidebar .nav-link {
+        padding-right: 1rem !important;
+        &::after {
+            content: "" !important;
+        }
+    }
+    & .sidebar-text {
+        display: none !important;
+    }
+}
+
+@media (max-width: 769px) {
+    .nav-item > .collapse {
+        min-width: 150px;
+        position: absolute;
+        left: 100%;
+        top: 0;
+    }
+    .sidebar .nav-link {
+        padding-right: 1rem !important;
+    }
+    .nav-link::after {
+        content: "" !important;
+    }
+}

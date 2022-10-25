@@ -1,0 +1,90 @@
+@import '../utilities/variables';
+@import '../utilities/functions.scss';
+
+$pseudos: ('hover', 'active', 'focus');
+$propertys: ('bkgd': 'background', 'text': 'color', 'text-color': 'color', 'border': 'border-color' );
+
+// For each property in $propertys.
+@each $propname, $property in $propertys {
+    @each $name, $hex in $colors {
+        .#{$propname}\.#{$name} {
+            #{$property}: $hex;
+        }
+    }
+    
+    // Colors with hover, active and focus.
+    @each $pseudo in $pseudos {
+        @each $name, $hex in $colors {
+            .#{$pseudo}\:#{$propname}\.#{$name}:#{$pseudo} {
+                #{$property}: $hex;
+            }
+        }
+    }
+}
+
+// Buttons
+@each $name, $hex in $colors {
+    .button\.#{$name} {
+        background: $hex;
+        color: var(--white);
+        &:hover {
+            background: set-color-darken($hex, 8%);
+        }
+        &:active {
+            background: set-color-darken($hex, 12%);
+        }
+    }
+
+    .button-outline\.#{$name} {
+        color: $hex;
+        border-color: $hex;
+        background: transparent;
+        &:hover {
+            background: $hex;
+            color: var(--white);
+        }
+        &:active {
+            $new: set-color-darken($hex, 5%);
+            background: $new;
+            color: var(--white);
+        }
+    }
+}
+// Classes and loops to define buttons colors.
+// @each $name, $data in $colors {
+//     @each $strenght, $hex in $data {
+//         .button.is-#{$name}-#{$strenght} {
+//             background-color: $hex;
+//             @if $strenght > 400 { color: var(--white); }
+//             @else { color: var(--black); }
+//             border: 1px solid $hex;
+//             &:hover {
+//                 border-color: darken($hex, 5%);
+//                 background-color: darken($hex, 5%);
+//             }
+            
+//             &:active {
+//                 border-color: darken($hex, 10%);
+//                 background-color: darken($hex, 10%);
+//             }
+//         }
+    
+//         .button.is-outline-#{$name}-#{$strenght} {
+//             background-color: transparent;
+//             color: $hex;
+//             border: 1px solid $hex;
+        
+//             &:hover {
+//                 border-color: $hex;
+//                 color: var(--white) !important;
+//                 background-color: $hex;
+//             }
+            
+//             &:active {
+//                 border-color: darken($hex, 10%);
+//                 color: var(--white);
+//                 background-color: darken($hex, 10%);
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,112 @@
+@import '../utilities/mixins.scss';
+$prefixs: (sm,md,lg,xl,xxl) !default;
+$spacing-directions: ('top' 't' 'y', 'right' 'r' 'x', 'bottom' 'b' 'y', 'left' 'l' 'x');
+
+// How many classes of margins and paddings will exist and their multipliers.
+$spacings: 12;
+$spacing-multiplier: 0.25rem;
+
+// Width and height classes values
+// key(class value name): value(class value);
+$percentage-values: (
+    '0': 0%,
+    '12\\.5': 12.5%,
+    '25': 25%,
+    '37\\.5': 37.5%,
+    '50': 50%,
+    '62\\.5': 62.5%,
+    '75': 75%,
+    '87\\.5': 87.5%,
+    '100': 100%
+);
+
+// How many classes of widths and heights will exist based on rem.
+$fixed-sizes: 12;
+
+
+
+// Margin and paddings.
+
+// Auto values.
+.m\.auto,
+.margin\.auto { margin: auto !important;}
+.p\.auto,
+.padding\.auto { padding: auto !important;}
+
+@each $direction, $suffix, $axis in $spacing-directions {
+    // MARGIN
+    .m#{$axis}\.auto,
+    .m#{$suffix}\.auto,
+    .margin-#{$axis}\.auto,
+    .margin-#{$direction}\.auto { margin-#{$direction}: auto !important;  }
+    
+    // PADDING
+    .p#{$axis}\.auto,
+    .p#{$suffix}\.auto,
+    .padding-#{$axis}\.auto,
+    .padding-#{$direction}\.auto  { padding-#{$direction}: auto !important; }
+}
+
+// Number values.
+@for $i from 0 through $spacings {
+    // MARGIN
+    .m\.#{$i},
+    .margin\.#{$i}  { margin: #{$i * $spacing-multiplier} !important;  }
+    
+    // MARGIN NEGATIVE
+    .m\.n#{$i},
+    .margin\.n#{$i} { margin: #{$i * -$spacing-multiplier} !important; }
+
+    // PADDING
+    .p\.#{$i},
+    .padding\.#{$i}  { padding: #{$i * $spacing-multiplier} !important; }
+
+
+    @each $direction, $suffix, $axis in $spacing-directions {
+        // MARGIN
+        .m#{$axis}\.#{$i},
+        .m#{$suffix}\.#{$i},
+        .margin-#{$axis}\.#{$i},
+        .margin-#{$direction}\.#{$i} { margin-#{$direction}: #{$i * $spacing-multiplier} !important;  }
+        
+        // MARGIN NEGATIVE
+        .m#{$axis}\.n#{$i},
+        .m#{$suffix}\.n#{$i},
+        .margin-#{$axis}\.n#{$i},
+        .margin-#{$direction}\.n#{$i} { margin-#{$direction}: #{$i * -$spacing-multiplier} !important; }
+        
+        // PADDING
+        .p#{$axis}\.#{$i},
+        .p#{$suffix}\.#{$i},
+        .padding-#{$axis}\.#{$i},
+        .padding-#{$direction}\.#{$i}  { padding-#{$direction}: #{$i * $spacing-multiplier} !important; }
+    }
+    
+}
+
+
+// Width and height.
+$variants: ('min-', '', 'max-');
+@each $propname, $proptype in ('w': width, 'h': height) {
+    @each $variant in $variants {
+
+        .#{$variant + $propname}\.auto,
+        .#{$variant + $proptype}\.auto { #{$variant + $proptype}: auto !important; }
+
+        // Percentage values.
+        @each $name, $value in $percentage-values {
+            .#{$variant + $propname}\.#{$name},
+            .#{$variant + $proptype}\.#{$name} { #{$variant + $proptype}: $value !important; }
+        };
+
+        // Rem values.
+        @for $i from 0 through $fixed-sizes {
+            .#{$variant + $propname}\.#{$i}rem,
+            .#{$variant + $proptype}\.#{$i}rem { #{$variant + $proptype}: #{$i * 1rem} !important; }
+        }
+
+        // Fullscreen value.
+        .#{$variant + $propname}\.screen,
+        .#{$variant + $proptype}\.screen { #{$proptype}: #{'100v' + $propname} !important; }
+    };
+};
