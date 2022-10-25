@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+#wrapper {
+    display: flex;
+}
+body {
+    background: var(--sandvik-100);
+}
+.card-border {
+    border-radius: 0;
+    border: 1px solid transparent;
+    border-image-source: linear-gradient(to bottom, var(--sandvik-800), var(--sandvik-200)) !important;
+    border-image-slice: 1 !important;
+}
+.input-required::after {
+    color: var(--sandvik-300);
+    content: "*";
+}
+.background\.login-page {
+    background: url(/img/M3CodeLogo2.jpeg);
+    background-position: 50%;
+    background-size: cover;
+    object-fit: contain;
+}
+.image-holder {
+    border: 1px dashed var(--sandvik-200);
+}
+
+
+/* DataTable overlay */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: 1px solid transparent !important;
+    background: var(--sandvik-100) !important;
+    /* color: var(--white) !important; */
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--sandvik-200) !important;
+    color: var(--white) !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    background: var(--sandvik-100) !important;
+    /* color: var(--black) !important; */
+}
+.dataTables_wrapper  .dataTables_paginate .paginate_button:hover {
+    color: var(--black) !important;
+}
+.dataTables_wrapper  .dataTables_paginate .paginate_button:active {
+    box-shadow: none !important;
+}
+.dataTables_wrapper {
+    color: var(--sandvik-800) !important;
+}
+.dataTables_wrapper > table td,
+.dataTables_wrapper > table th {
+    border-color: var(--sandvik-100) !important;
+}
+table.dataTable.cell-border thead tr > *:first-child {
+    border-left: 1px solid rgba(0,0,0,0.15);
+}
+table.dataTable.cell-border thead tr > * {
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-right: 1px solid rgba(0,0,0,0.15);
+}
+.dataTable td.dataTables_empty {
+    display: none !important;
+    background: transparent;
+}
+.table.dataTable.no-footer {
+    border-color: var(--sandvik-100);
+}
