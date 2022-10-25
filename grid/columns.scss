@@ -67,6 +67,8 @@ $gaps: 8;
 // Default column.
 .col, .column {
     @extend %default;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
     -webkit-box-flex: 1;
     flex: 1 1 0;
     max-width: 100%;
@@ -105,6 +107,11 @@ $gaps: 8;
     // Define the values in right resolutions
     @include media-breakpoint($prefix) {
         .#{$prefix}\:col, .#{$prefix}\:column {
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -webkit-box-flex: 1;
+            flex: 1 1 0;
+            max-width: 100%;
             &\.auto {
                 flex: 0 0 auto;
                 width: auto;
