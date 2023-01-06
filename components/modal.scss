@@ -92,16 +92,20 @@
 }
 
 // Modal sizes
-.modal.sm {
+.modal\.sm
+.modal.small {
     max-width: 640px;
 }
-.modal.md {
+.modal\.md,
+.modal.medium {
     max-width: 768px;
 }
-.modal.lg {
+.modal\.lg,
+.modal.large {
     max-width: 1024px;
 }
-.modal.xl {
+.modal\.xl,
+.modal.xlarge {
     max-width: 1280px;
 }
 
