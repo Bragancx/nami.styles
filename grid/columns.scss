@@ -24,17 +24,18 @@ $gaps: 8;
 .row,
 .rows {
     // Remove all gaps
+    &.gap\.0,
     &.no-gap {
         margin-inline: 0;
-        & > .column { padding: 0;}
+        & > div { padding: 0;}
     }
     
     // Gap sizes.
-    @for $i from 0 through $gaps {
+    @for $i from 1 through $gaps {
         &.g\.#{$i},
         &.gap\.#{$i} {
             margin-inline: -#{ $i * calc($columns-gap / 2) };
-            & > .column {
+            & > div {
                 padding: #{ $i * calc($columns-gap / 2) };
             }
         }
@@ -43,14 +44,14 @@ $gaps: 8;
         &.gap-x\.#{$i},
         &.gap-h\.#{$i} {
             margin-inline: -#{ $i * calc($columns-gap / 2) };
-            & > .column {
+            & > div {
                 padding-inline: #{ $i * calc($columns-gap /2) };
             }
         }
-        &.g-y\.#{$i} > .column,
-        &.g-v\.#{$i} > .column,
-        &.g-y\.#{$i} > .column,
-        &.gap-v\.#{$i} > .column {
+        &.g-y\.#{$i} > div,
+        &.g-v\.#{$i} > div,
+        &.g-y\.#{$i} > div,
+        &.gap-v\.#{$i} > div {
             padding-block: #{ $i * calc($columns-gap /2) };
         }
     }
