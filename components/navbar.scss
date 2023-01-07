@@ -29,6 +29,14 @@
     height: inherit;
     margin-right: auto;
 }
+.navbar-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: inherit;
+    margin-inline: auto;
+}
 .navbar-end {
     display: flex;
     align-items: center;
