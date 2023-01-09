@@ -23,10 +23,6 @@ $percentage-values: (
 // How many classes of widths and heights will exist based on rem.
 $fixed-sizes: 12;
 
-
-
-// Margin and paddings.
-
 // Auto values.
 .m\.auto,
 .margin\.auto { margin: auto !important;}
@@ -51,15 +47,24 @@ $fixed-sizes: 12;
 @for $i from 0 through $spacings {
     // MARGIN
     .m\.#{$i},
-    .margin\.#{$i}  { margin: #{$i * $spacing-multiplier} !important;  }
+    .margin\.#{$i} { margin: #{$i * $spacing-multiplier} !important; }
+    
+    .m\.#{$i}rem,
+    .margin\.#{$i}rem { margin: #{$i * 1rem} !important; }
     
     // MARGIN NEGATIVE
     .m\.n#{$i},
     .margin\.n#{$i} { margin: #{$i * -$spacing-multiplier} !important; }
+    
+    .m\.n#{$i}rem,
+    .margin\.n#{$i}rem { margin: #{$i * -1rem} !important; }
 
     // PADDING
     .p\.#{$i},
-    .padding\.#{$i}  { padding: #{$i * $spacing-multiplier} !important; }
+    .padding\.#{$i} { padding: #{$i * $spacing-multiplier} !important; }
+    
+    .p\.#{$i}rem,
+    .padding\.#{$i}rem { padding: #{$i * 1rem} !important; }
 
 
     @each $direction, $suffix, $axis in $spacing-directions {
@@ -69,17 +74,34 @@ $fixed-sizes: 12;
         .margin-#{$axis}\.#{$i},
         .margin-#{$direction}\.#{$i} { margin-#{$direction}: #{$i * $spacing-multiplier} !important;  }
         
+        .m#{$axis}\.#{$i}rem,
+        .m#{$suffix}\.#{$i}rem,
+        .margin-#{$axis}\.#{$i}rem,
+        .margin-#{$direction}\.#{$i}rem { margin-#{$direction}: #{$i * 1rem} !important;  }
+        
         // MARGIN NEGATIVE
         .m#{$axis}\.n#{$i},
         .m#{$suffix}\.n#{$i},
         .margin-#{$axis}\.n#{$i},
         .margin-#{$direction}\.n#{$i} { margin-#{$direction}: #{$i * -$spacing-multiplier} !important; }
         
+        // MARGIN NEGATIVE
+        .m#{$axis}\.n#{$i}rem,
+        .m#{$suffix}\.n#{$i}rem,
+        .margin-#{$axis}\.n#{$i}rem,
+        .margin-#{$direction}\.n#{$i}rem { margin-#{$direction}: #{$i * -1rem} !important; }
+        
         // PADDING
         .p#{$axis}\.#{$i},
         .p#{$suffix}\.#{$i},
         .padding-#{$axis}\.#{$i},
-        .padding-#{$direction}\.#{$i}  { padding-#{$direction}: #{$i * $spacing-multiplier} !important; }
+        .padding-#{$direction}\.#{$i} { padding-#{$direction}: #{$i * $spacing-multiplier} !important; }
+        
+        // PADDING
+        .p#{$axis}\.#{$i}rem,
+        .p#{$suffix}\.#{$i}rem,
+        .padding-#{$axis}\.#{$i}rem,
+        .padding-#{$direction}\.#{$i}rem { padding-#{$direction}: #{$i * 1rem} !important; }
     }
     
 }

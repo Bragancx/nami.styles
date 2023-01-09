@@ -1,0 +1,65 @@
+@for $i from 0 through 6 {
+   .b\.#{$i}, .border\.#{$i}, .border-width\.#{$i} {
+       border-width: #{$i * 1px} !important;
+       border-style: solid !important;
+   }
+
+   .bt\.#{$i}, .border-top\.#{$i},
+   .by\.#{$i}, .border-y\.#{$i} {
+       border-width: 0;
+       border-top-width: #{$i * 1px} !important;
+       border-style: solid !important;
+   }
+   .br\.#{$i}, .border-right\.#{$i},
+   .bx\.#{$i}, .border-x\.#{$i} {
+       border-width: 0;
+       border-right-width: #{$i * 1px} !important;
+       border-style: solid !important;
+   }
+   .bb\.#{$i}, .border-bottom\.#{$i},
+   .by\.#{$i}, .border-y\.#{$i} {
+       border-width: 0;
+       border-bottom-width: #{$i * 1px} !important;
+       border-style: solid !important;
+   }
+   .bl\.#{$i}, .border-left\.#{$i},
+   .bx\.#{$i}, .border-x\.#{$i} {
+       border-width: 0;
+       border-left-width: #{$i * 1px} !important;
+       border-style: solid !important;
+   }
+   
+}
+$important-suffixes: ('':'', '\\!': '!important' );
+@each $suffix, $important in $important-suffixes {
+   .radius\.0#{$suffix},
+   .border-radius\.0#{$suffix} {
+      $value: 0 #{$important};
+      -webkit-border-radius: $value;
+      -moz-border-radius: $value;
+      border-radius: $value;
+   }
+   .radius\.default#{$suffix},
+   .border-radius\.default#{$suffix} {
+      $value: var(--border-radius) #{$important};
+      -webkit-border-radius: $value;
+      -moz-border-radius: $value;
+      border-radius: $value;
+   }
+   .radius\.rounded#{$suffix},
+   .border\.rounded#{$suffix},
+   .border-radius\.rounded#{$suffix} {
+      $value: 1rem #{important};
+      -webkit-border-radius: #{$value};
+      -moz-border-radius: #{$value};
+      border-radius: #{$value};
+   }
+   .radius\.circle#{$suffix},
+   .border\.circle#{$suffix},
+   .border-radius\.circle#{$suffix} {
+      $value: 50% #{important};
+      -webkit-border-radius: #{$value};
+      -moz-border-radius: #{$value};
+      border-radius: #{$value};
+   }
+}

@@ -1,0 +1,9 @@
+$types: ( border-box, content-box, inherit, unset, revert );
+@each $type in $types {
+   .box-sizing\.#{$type} {
+      box-sizing: #{$type};
+   }
+   .box-sizing\.#{$type}\! {
+      box-sizing: #{$type} !important;
+   }
+}

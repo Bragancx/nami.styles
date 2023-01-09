@@ -1,0 +1,60 @@
+@import "../utilities/mixins.scss";
+$prefixs: (sm,md,lg,xl,xxl);
+
+// Position classes.
+$positions: (static, relative, absolute, fixed, sticky);
+
+// Deprecated.
+$position-step: 25%;
+
+@each $pos in $positions {
+	.pos\.#{$pos},
+	.position\.#{$pos} {
+		position: $pos;
+	}
+	
+	@each $prefix in $prefixs {
+		@include media-breakpoint($prefix) {
+			.#{$prefix}\:pos\.#{$pos},
+			.#{$prefix}\:position\.#{$pos} {
+				position: $pos;
+			}
+		}
+	}
+}
+
+.top-left, .top-center, .top-right {
+	top: 0;
+}
+.top-right, .center-right, .bottom-right {
+	right: 0;
+}
+.bottom-left, .bottom-center, .bottom-right {
+	bottom: 0;
+}
+.top-left, .center-left, .bottom-left {
+	left: 0;
+}
+.center-center {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+@for $i from 0 through 4 {
+	.top\.#{$i} { top: $i * $position-step; }
+	.right\.#{$i} { right: $i * $position-step; }
+	.bottom\.#{$i} { bottom: $i * $position-step; }
+	.left\.#{$i} { left: $i * $position-step; }
+	
+	@each $prefix in $prefixs {
+		@include media-breakpoint($prefix) {
+			.#{$prefix}\:top\.#{$i} { top: $i * $position-step; }
+			.#{$prefix}\:right\.#{$i} { right: $i * $position-step; }
+			.#{$prefix}\:bottom\.#{$i} { bottom: $i * $position-step; }
+			.#{$prefix}\:left\.#{$i} { left: $i * $position-step; }
+		}
+	}
+}
+.float\.left { float: left; }
+.float\.right { float: right; }

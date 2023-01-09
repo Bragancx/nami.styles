@@ -31,30 +31,30 @@ $gaps: 8;
     }
     
     // Gap sizes.
-    @for $i from 1 through $gaps {
-        &.g\.#{$i},
-        &.gap\.#{$i} {
-            margin-inline: -#{ $i * calc($columns-gap / 2) };
-            & > div {
-                padding: #{ $i * calc($columns-gap / 2) };
-            }
-        }
-        &.g-x\.#{$i},
-        &.g-h\.#{$i},
-        &.gap-x\.#{$i},
-        &.gap-h\.#{$i} {
-            margin-inline: -#{ $i * calc($columns-gap / 2) };
-            & > div {
-                padding-inline: #{ $i * calc($columns-gap /2) };
-            }
-        }
-        &.g-y\.#{$i} > div,
-        &.g-v\.#{$i} > div,
-        &.g-y\.#{$i} > div,
-        &.gap-v\.#{$i} > div {
-            padding-block: #{ $i * calc($columns-gap /2) };
-        }
-    }
+    // @for $i from 1 through $gaps {
+    //     &.g\.#{$i},
+    //     &.gap\.#{$i} {
+    //         margin-inline: -#{ $i * calc($columns-gap * 0.5) };
+    //         & > div {
+    //             padding: #{ $i * calc($columns-gap * 0.5) };
+    //         }
+    //     }
+    //     &.g-x\.#{$i},
+    //     &.g-h\.#{$i},
+    //     &.gap-x\.#{$i},
+    //     &.gap-h\.#{$i} {
+    //         margin-inline: -#{ $i * calc($columns-gap * 0.5) };
+    //         & > div {
+    //             padding-inline: #{ $i * calc($columns-gap /2) };
+    //         }
+    //     }
+    //     &.g-y\.#{$i} > div,
+    //     &.g-v\.#{$i} > div,
+    //     &.g-y\.#{$i} > div,
+    //     &.gap-v\.#{$i} > div {
+    //         padding-block: #{ $i * calc($columns-gap /2) };
+    //     }
+    // }
 }
 
 // Every column class extend this.

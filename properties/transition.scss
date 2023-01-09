@@ -1,0 +1,8 @@
+$value: 0;
+$transition-duration-step: 0.05;
+
+@while $value <= 1 {
+   .transition\.#{$value * 100} { transition: $value * 1s; }
+   .transition\.#{$value * 100}\! { transition: $value * 1s !important; }
+   $value: $value + $transition-duration-step;
+}

@@ -8,7 +8,7 @@ $text-size-offset: .125em;
 
 // How many classes of text-size will exist and the multiplier.
 $text-sizes: 24;
-$text-size-multiplier: 0.125em;
+$text-size-multiplier: 0.25;
 
 // How many classes of line-height will exist and the multiplier.
 $line-heights: 8;
@@ -64,8 +64,17 @@ large {
     font-size: #{1em + $text-size-offset};
 }
 @for $i from 1 through $text-sizes {
+    .font-size\.#{$i},
     .text-size\.#{$i} {
-        font-size: #{$i * $text-size-multiplier};
+        font-size: #{$i * $text-size-multiplier * 1em};
+    }
+    .font-size\.#{$i}em,
+    .text-size\.#{$i}em {
+        font-size: #{$i * 1em};
+    }
+    .font-size\.#{$i}rem,
+    .text-size\.#{$i}rem {
+        font-size: #{$i * 1rem};
     }
 }
 

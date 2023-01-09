@@ -2,7 +2,7 @@
 @import '../utilities/functions.scss';
 
 $pseudos: ('hover', 'active', 'focus');
-$propertys: ('bkgd': 'background', 'text': 'color', 'text-color': 'color', 'border': 'border-color' );
+$propertys: ('bkgd': 'background', 'text': 'color', 'text-color': 'color', 'border': 'border-color', 'fill': 'fill' );
 
 // For each property in $propertys.
 @each $propname, $property in $propertys {

@@ -1,0 +1,19 @@
+@import "../utilities/mixins.scss";
+$prefixs: (sm,md,lg,xl,xxl);
+
+$visibility-values: (visible, hidden, inherit, initial, unset, collapse);
+
+@each $value in $visibility-values {
+   .visibility\.#{$value} {
+      visibility: $value;
+   }
+
+   @each $prefix in $prefixs {
+      @include media-breakpoint($prefix) {
+         .#{$prefix}\:visibility\.#{$value},
+         .#{$prefix}\:visibility\.#{$value} {
+            visibility: $value;
+         }
+      }
+  }
+}

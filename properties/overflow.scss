@@ -1,0 +1,5 @@
+$overflow-values: (auto, scroll, visible, hidden);
+@each $value in $overflow-values {
+	.overflow\.#{$value} { overflow: $value; }
+	.overflow\.#{$value}\! { overflow: $value !important; }
+}

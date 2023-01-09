@@ -1,0 +1,15 @@
+$value: 0;
+$opacity-step: 5;
+@while $value <= 100 {
+
+    .opacity\.#{$value} { opacity: $value * 1%; }
+    .opacity\.#{$value}\! { opacity: $value * 1% !important; }
+    .hover\:opacity\.#{$value}:hover { opacity: $value * 1%; }
+    .hover\:opacity\.#{$value}:hover { opacity: $value * 1% !important; }
+    .focus\:opacity\.#{$value}:focus { opacity: $value * 1%; }
+    .focus\:opacity\.#{$value}:focus { opacity: $value * 1% !important; }
+    .active\:opacity\.#{$value}:active { opacity: $value * 1%; }
+    .active\:opacity\.#{$value}:active { opacity: $value * 1% !important; }
+
+    $value: $value + $opacity-step;
+}

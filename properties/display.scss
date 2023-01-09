@@ -1,0 +1,27 @@
+@import '../utilities/mixins.scss';
+
+@each $display in ('none', 'block', 'flex', 'grid', 'table', 'inline', 'inline-block', 'inline-flex', 'inline-grid', 'inline-table') {
+    .d\.#{$display},
+    .display\.#{$display} {
+        display: #{$display};
+    }
+    .d\.#{$display}\!,
+    .display\.#{$display}\! {
+        display: #{$display} !important;
+    }
+}
+
+@each $prefix in (sm,md,lg,xl,xxl) {
+    @include media-breakpoint($prefix) {
+        @each $display in ('none', 'block', 'flex', 'grid', 'table', 'inline', 'inline-block', 'inline-flex', 'inline-grid', 'inline-table') {
+            .#{$prefix}\:d\.#{$display},
+            .#{$prefix}\:display\.#{$display} {
+                display: #{$display};
+            }
+            .#{$prefix}\:d\.#{$display}\!,
+            .#{$prefix}\:display\.#{$display}\! {
+                display: #{$display};
+            }
+        }
+    }
+}

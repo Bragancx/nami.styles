@@ -1,49 +1,77 @@
+$navbar-min-height: 3.25rem;
+$navbar-grid-columns: 1fr 5fr 1fr;
+$navbar-subarea-width: 1300px;
 .navbar {
     display: flex;
     align-items: center;
 
-    min-height: 3.25rem;
+    min-height: $navbar-min-height;
     position: relative;
     z-index: 30;
-}
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    
-    min-height: inherit;
-    height: inherit;
-}
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    flex: 1 0 auto;
 
-    height: inherit;
+    &.fixed {
+        position: sticky;
+        top: 0;
+    }
 }
-.navbar-start {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.navbar {
+
+    & > .area {
+        display: flex;
+        align-items: center;
+        flex: 1 0 auto;
+        
+        width: 100%;
+        max-width: $navbar-subarea-width;
+        
+        margin: 0 auto;
+    }
+
+    & > .area {
+
+        & > .brand {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            
+            min-height: inherit;
+            height: inherit;
+        }
     
-    height: inherit;
-    margin-right: auto;
+        & > .section {
+            display: flex;
+            align-items: center;
+            height: inherit;
+    
+            &.left,
+            &.start {
+                margin-inline: 0 auto;
+                justify-content: flex-start;
+            }
+            
+            &.mid,
+            &.center {
+                margin-inline: auto;
+                justify-content: center;
+            }
+            
+            &.right,
+            &.end {
+                margin-inline: auto 0;
+                justify-content: flex-end;
+            }
+        }
+
+    }
 }
-.navbar-middle {
+.item {
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    height: inherit;
-    margin-inline: auto;
-}
-.navbar-end {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     
     height: inherit;
-    margin-left: auto;
+    cursor: pointer;
 }
 .navbar-item, .navbar-link {
     display: flex;

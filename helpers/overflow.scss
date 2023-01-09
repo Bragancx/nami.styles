@@ -1,6 +1,0 @@
-$overflows: (auto, scroll, visible, hidden);
-@each $type in $overflows {
-  .overflow\.#{$type} {
-    overflow: $type !important;
-  }
-}

@@ -1,0 +1,23 @@
+.input {
+   display: inline-block;
+   width: 100%;
+   max-width: 100%;
+
+   padding: 0.25rem 1rem;
+   font-size: 1rem;
+   line-height: 1.75;
+   
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+
+   transition: 0.15s;
+}
+
+.input[readonly] {
+   opacity: 0.8;
+}
+.input.disabled,
+.input:disabled {
+   opacity: 0.6;
+}
