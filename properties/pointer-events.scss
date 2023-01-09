@@ -8,14 +8,14 @@ $cursor-values: (alias, all-scroll, auto, cell, col-resize, context-menu, copy, 
     }
 }
 
-$pointer-events: (all, auto, none, fill, inherit, bounding-box, painted, stroke, visible);
-@each $event in $pointer-events {
-    .pointer\.#{$event},
-    .pointer-events\.#{event} {
-        pointer-events: $event;
+$pointer-events-values: (all, auto, none, fill, inherit, bounding-box, painted, stroke, visible);
+@each $value in $pointer-events-values {
+    .pointer\.#{$value},
+    .pointer-events\.#{$value} {
+        pointer-events: $value;
     }
-    .pointer\.#{$event}\!,
-    .pointer-events\.#{event}\! {
-        pointer-events: $event !important;
+    .pointer\.#{$value}\!,
+    .pointer-events\.#{$value}\! {
+        pointer-events: $value !important;
     }
 }

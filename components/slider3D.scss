@@ -1,0 +1,67 @@
+@use 'sass:map';
+$slider-min-items: 3;
+$slider-max-items: 8;
+$slider-items-width: 40%;
+
+// Items config
+$item-front: ( 'brightness': 1, 'scale': 1, 'z-index': 2 );
+$items-side: ( 'brightness': 0.4, 'scale': 0.8, 'z-index': 1, 'translate': 45% );
+$items-back: ( 'brightness': 0.2, 'scale': 0.6, 'z-index': 0, 'translate': 80% );
+
+.slider3D {
+   display: flex;
+   justify-content: center;
+
+   & > *:not(input) {
+      position: absolute;
+      
+      // top: 50%;
+      // transform: translateY(-50%);
+      width: 100%;
+      max-width: $slider-items-width;
+      
+      cursor: pointer;
+      transition: 0.25s;
+      overflow: hidden;
+   }
+   & > input[type='radio'] {
+      display: none;
+   }
+
+   @for $size from 3 to $slider-max-items {
+      &[data-size='#{$size}'] {
+         & > *:not(input) {
+            transform: translateX( 0 ) scale(#{ map.get($items-back, 'scale') });
+            filter: brightness(#{ map.get($items-back, 'brightness') });
+            z-index: #{ map.get($items-back, 'z-index') };
+         }
+         @for $i from 1 through $size {
+            & > input:nth-child(#{$i}):checked ~ *:nth-child(#{ $size + $i }) {
+               transform: translate(0) scale( #{ map.get($item-front, 'scale')  } );
+               filter: brightness( #{ map.get($item-front, 'brightness')  } );
+               z-index: #{ map.get($item-front, 'z-index') };
+            }
+            & > input:nth-child(#{$i}):checked ~ *:nth-child(#{ $size + (( $i ) % $size ) + 1 }) {
+               transform: translateX( #{ map.get($items-side, 'translate') } ) scale(#{ map.get($items-side, 'scale') });
+               filter: brightness(#{ map.get($items-side, 'brightness') });
+               z-index: #{ map.get($items-side, 'z-index') };
+            }
+            & > input:nth-child(#{$i}):checked ~ *:nth-child(#{ $size + (( $i + 1 ) % $size ) + 1 }) {
+               transform: translateX( #{ map.get($items-back, 'translate') } ) scale(#{ map.get($items-back, 'scale') });
+               filter: brightness(#{ map.get($items-back, 'brightness') });
+               z-index: #{ map.get($items-back, 'z-index') };
+            }
+            & > input:nth-child(#{$i}):checked ~ *:nth-child(#{ $size + (($size + $i - 3) % $size ) + 1 }) {
+               transform: translateX( #{ map.get($items-back, 'translate') * -1 } ) scale(#{ map.get($items-back, 'scale') });
+               filter: brightness(#{ map.get($items-back, 'brightness') });
+               z-index: #{ map.get($items-back, 'z-index') };
+            }
+            & > input:nth-child(#{$i}):checked ~ *:nth-child(#{ $size + (($size + $i - 2) % $size ) + 1 }) {
+               transform: translateX( #{ map.get($items-side, 'translate') * -1 } ) scale(#{ map.get($items-side, 'scale') });
+               filter: brightness(#{ map.get($items-side, 'brightness') });
+               z-index: #{ map.get($items-side, 'z-index') };
+            }
+         }
+      }
+   }
+}

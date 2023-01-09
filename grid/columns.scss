@@ -7,125 +7,129 @@ $gaps: 8;
 
 // Row for one line.
 .row {
-    display: flex;   
-    margin-inline: #{-$columns-gap};
-    flex: 1 1 0;
+	display: flex;   
+	margin-inline: #{-$columns-gap};
+	flex: 1 1 0;
 }
 
 // Row for multiple lines.
 .rows {
-    display: flex;
-    margin-inline: #{-$columns-gap};
-    flex-wrap: wrap;
-    flex: 1 1 0;
+	display: flex;
+	margin-inline: #{-$columns-gap};
+	flex-wrap: wrap;
+	flex: 1 1 0;
 }
 
 // When gap is 0, no spacing between columns.
 .row,
 .rows {
-    // Remove all gaps
-    &.gap\.0,
-    &.no-gap {
-        margin-inline: 0;
-        & > div { padding: 0;}
-    }
-    
-    // Gap sizes.
-    // @for $i from 1 through $gaps {
-    //     &.g\.#{$i},
-    //     &.gap\.#{$i} {
-    //         margin-inline: -#{ $i * calc($columns-gap * 0.5) };
-    //         & > div {
-    //             padding: #{ $i * calc($columns-gap * 0.5) };
-    //         }
-    //     }
-    //     &.g-x\.#{$i},
-    //     &.g-h\.#{$i},
-    //     &.gap-x\.#{$i},
-    //     &.gap-h\.#{$i} {
-    //         margin-inline: -#{ $i * calc($columns-gap * 0.5) };
-    //         & > div {
-    //             padding-inline: #{ $i * calc($columns-gap /2) };
-    //         }
-    //     }
-    //     &.g-y\.#{$i} > div,
-    //     &.g-v\.#{$i} > div,
-    //     &.g-y\.#{$i} > div,
-    //     &.gap-v\.#{$i} > div {
-    //         padding-block: #{ $i * calc($columns-gap /2) };
-    //     }
-    // }
+	// Remove all gaps
+	&.gap\.0,
+	&.no-gap {
+		margin-inline: 0;
+		& > div { padding: 0;}
+	}
+	
+	// Columns
+	// Columns
+	@for $i from 1 through $columns-per-row {
+		&.cols\.#{$i}, &.columns\.#{$i} {
+			& > div {
+				@extend %default;
+				-webkit-box-flex: 0;
+				-ms-flex: (calc(100% / $i));
+				flex: 0 0 (calc(100% / $i));
+				max-width: (calc(100% / $i));
+			}
+		}
+		
+		@each $prefix in (sm,md,lg,xl,xxl) {
+			&.#{$prefix}\:cols\.#{$i},
+			&.#{$prefix}\:columns\.#{$i} { & > div { @extend %default; }}
+			@include media-breakpoint($prefix) {
+				&.#{$prefix}\:cols\.#{$i},
+				&.#{$prefix}\:columns\.#{$i} {
+					& > div {
+						-webkit-box-flex: 0;
+						-ms-flex: (calc(100% / $i));
+						flex: 0 0 (calc(100% / $i));
+						max-width: (calc(100% / $i));
+					}
+				}
+			}
+		}
+	}
 }
 
 // Every column class extend this.
 %default {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: $columns-gap;
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: $columns-gap;
 }
 
 // Default column.
 .col, .column {
-    @extend %default;
-    -ms-flex-preferred-size: 0;
-    flex-basis: 0;
-    -webkit-box-flex: 1;
-    flex: 1 1 0;
-    max-width: 100%;
+	@extend %default;
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-webkit-box-flex: 1;
+	flex: 1 1 0;
+	max-width: 100%;
 
-    &\.auto {
-        @extend %default;
-        flex: 0 0 auto;
-        width: auto;
-        max-width: 100%;
-    }
-    @for $i from 0 through $columns-per-row {
-        &\.#{$i} {
-            @extend %default;
-            -webkit-box-flex: 0;
-            -ms-flex: (calc(100% / $columns-per-row) * $i);
-            flex: 0 0 (calc(100% / $columns-per-row) * $i);
-            max-width: (calc(100% / $columns-per-row) * $i);
-        }
-    }
+	&\.auto {
+		@extend %default;
+		flex: 0 0 auto;
+		width: auto;
+		max-width: 100%;
+	}
+	@for $i from 0 through $columns-per-row {
+		&\.#{$i} {
+			@extend %default;
+			-webkit-box-flex: 0;
+			-ms-flex: (calc(100% / $columns-per-row) * $i);
+			flex: 0 0 (calc(100% / $columns-per-row) * $i);
+			max-width: (calc(100% / $columns-per-row) * $i);
+		}
+	}
 }
 
 @each $prefix in (sm,md,lg,xl,xxl) {
-    
-    // Default values.
-    .#{$prefix}\:col, .#{$prefix}\:column {
-        &\.auto {
-            @extend %default;
-        }
-        @for $i from 0 through $columns-per-row {
-            &\.#{$i} {
-                @extend %default;
-            }
-        }
-    }
+	
+	// Default values.
+	.#{$prefix}\:col, .#{$prefix}\:column {
+		&\.auto {
+			@extend %default;
+		}
+		@for $i from 0 through $columns-per-row {
+			&\.#{$i} {
+				@extend %default;
+			}
+		}
+	}
 
-    // Define the values in right resolutions
-    @include media-breakpoint($prefix) {
-        .#{$prefix}\:col, .#{$prefix}\:column {
-            -ms-flex-preferred-size: 0;
-            flex-basis: 0;
-            -webkit-box-flex: 1;
-            flex: 1 1 0;
-            max-width: 100%;
-            &\.auto {
-                flex: 0 0 auto;
-                width: auto;
-                max-width: 100%;
-            }
-            @for $i from 0 through $columns-per-row {
-                &\.#{$i} {
-                    -webkit-box-flex: 0;
-                    -ms-flex: (calc(100% / $columns-per-row) * $i);
-                    flex: 0 0 (calc(100% / $columns-per-row) * $i);
-                    max-width: (calc(100% / $columns-per-row) * $i);
-                }
-            }
-        }
-    }
+	// Define the values in right resolutions
+	@include media-breakpoint($prefix) {
+		.#{$prefix}\:col, .#{$prefix}\:column {
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-webkit-box-flex: 1;
+			flex: 1 1 0;
+			max-width: 100%;
+			&\.auto {
+				flex: 0 0 auto;
+				width: auto;
+				max-width: 100%;
+			}
+			@for $i from 0 through $columns-per-row {
+				&\.#{$i} {
+					-webkit-box-flex: 0;
+					-ms-flex: (calc(100% / $columns-per-row) * $i);
+					flex: 0 0 (calc(100% / $columns-per-row) * $i);
+					max-width: (calc(100% / $columns-per-row) * $i);
+				}
+			}
+		}
+	}
 }

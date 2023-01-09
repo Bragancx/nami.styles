@@ -1,6 +1,6 @@
 $navbar-min-height: 3.25rem;
 $navbar-grid-columns: 1fr 5fr 1fr;
-$navbar-subarea-width: 1300px;
+$navbar-subarea-width: 1200px;
 .navbar {
     display: flex;
     align-items: center;
@@ -21,6 +21,7 @@ $navbar-subarea-width: 1300px;
         align-items: center;
         flex: 1 0 auto;
         
+        height: inherit;
         width: 100%;
         max-width: $navbar-subarea-width;
         

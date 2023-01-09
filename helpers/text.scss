@@ -66,11 +66,11 @@ large {
 @for $i from 1 through $text-sizes {
     .font-size\.#{$i},
     .text-size\.#{$i} {
-        font-size: #{$i * $text-size-multiplier * 1em};
+        font-size: #{$i * $text-size-multiplier * 1rem};
     }
     .font-size\.#{$i}em,
     .text-size\.#{$i}em {
-        font-size: #{$i * 1em};
+        font-size: #{$i * 1rem};
     }
     .font-size\.#{$i}rem,
     .text-size\.#{$i}rem {
