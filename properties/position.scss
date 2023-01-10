@@ -35,6 +35,28 @@ $position-step: 25%;
 .top-left, .center-left, .bottom-left {
 	left: 0;
 }
+
+.center-left,
+.center-right,
+.top\.center {
+	top: 50%;
+	transform: translateY(-50%);
+}
+.right\.center {
+	right: 50%;
+	transform: translateY(-50%);
+}
+.bottom\.center {
+	bottom: 50%;
+	transform: translateY(-50%);
+}
+.top-center,
+.bottom-center,
+.left\.center {
+	left: 50%;
+	transform: translateY(-50%);
+}
+
 .center-center {
 	top: 50%;
 	left: 50%;
