@@ -1,0 +1,58 @@
+@import '../utilities/mixins.scss';
+
+$padding-step: 0.25rem;
+
+@mixin paddings($prefix,$suffix,$unit,$important) {
+   @for $i from 0 through 6 {
+      // PADDING
+      .#{$prefix}p\.#{$i}#{$suffix},
+      .#{$prefix}padding\.#{$i}#{$suffix} { padding: #{$i * $unit} #{$important}; }
+
+      .#{$prefix}py\.#{$i}#{$suffix},
+      .#{$prefix}padding-y\.#{$i}#{$suffix},
+      .#{$prefix}pv\.#{$i}#{$suffix},
+      .#{$prefix}padding-v\.#{$i}#{$suffix},
+      .#{$prefix}padding-vertical\.#{$i}#{$suffix},
+      .#{$prefix}pt\.#{$i}#{$suffix},
+      .#{$prefix}padding-t\.#{$suffix},
+      .#{$prefix}padding-top\.#{$i}#{$suffix} { padding-top: #{$i * $unit} #{$important}; }
+
+      .#{$prefix}px\.#{$i}#{$suffix},
+      .#{$prefix}padding-x\.#{$i}#{$suffix},
+      .#{$prefix}ph\.#{$i}#{$suffix},
+      .#{$prefix}padding-h\.#{$i}#{$suffix},
+      .#{$prefix}padding-horizontal\.#{$i}#{$suffix},
+      .#{$prefix}pr\.#{$i}#{$suffix},
+      .#{$prefix}padding-r\.#{$suffix},
+      .#{$prefix}padding-right\.#{$i}#{$suffix} { padding-right: #{$i * $unit} #{$important}; }
+      
+      .#{$prefix}py\.#{$i}#{$suffix},
+      .#{$prefix}padding-y\.#{$i}#{$suffix},
+      .#{$prefix}pv\.#{$i}#{$suffix},
+      .#{$prefix}padding-v\.#{$i}#{$suffix},
+      .#{$prefix}padding-vertical\.#{$i}#{$suffix},
+      .#{$prefix}pb\.#{$i}#{$suffix},
+      .#{$prefix}padding-b\.#{$suffix},
+      .#{$prefix}padding-bottom\.#{$i}#{$suffix} { padding-bottom: #{$i * $unit} #{$important}; }
+
+      .#{$prefix}px\.#{$i}#{$suffix},
+      .#{$prefix}padding-x\.#{$i}#{$suffix},
+      .#{$prefix}ph\.#{$i}#{$suffix},
+      .#{$prefix}padding-h\.#{$i}#{$suffix},
+      .#{$prefix}padding-horizontal\.#{$i}#{$suffix},
+      .#{$prefix}pl\.#{$i}#{$suffix},
+      .#{$prefix}padding-l\.#{$suffix},
+      .#{$prefix}padding-left\.#{$i}#{$suffix} { padding-left: #{$i * $unit} #{$important}; }
+   }
+}
+
+@each $important in ('', '!important') {
+   @each $suffix, $unit, $important in ('' $padding-step, 'rem' 1rem, '' $padding-step, 'rem' 1rem ) {
+      @include paddings('',$suffix,$unit,$important);
+      @each $prefix in (sm,md,lg,xl,xxl) {
+         @include media-breakpoint($prefix) {
+            @include paddings($prefix + '\\:',$suffix,$unit,$important);
+         }
+      }
+   }
+}
