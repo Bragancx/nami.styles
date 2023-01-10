@@ -3,7 +3,7 @@
 $padding-step: 0.25rem;
 
 @mixin paddings($prefix,$suffix,$unit) {
-   @for $i from 0 through 6 {
+   @for $i from 0 through 10 {
       // PADDING
       .#{$prefix}p\.#{$i}#{$suffix},
       .#{$prefix}padding\.#{$i}#{$suffix} { padding: #{$i * $unit} !important; }

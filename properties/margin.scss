@@ -45,7 +45,7 @@ $margin-step: 0.25rem;
       .#{$prefix}margin-left\.#{$value}#{$suffix} { margin-left: $value !important; }
    }
 
-   @for $i from 1 through 6 {
+   @for $i from 1 through 10 {
       // margin
       .#{$prefix}m\.#{$i}#{$suffix},
       .#{$prefix}margin\.#{$i}#{$suffix} { margin: #{$i * $unit} !important; }
