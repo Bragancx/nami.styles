@@ -8,19 +8,19 @@
 
 @for $i from 0 through 8 {
 	$gap: 0.25rem;
-	.margin-gap\.#{$i} {
+	.alt-gap\.#{$i} {
 		margin: $i * $gap * -1;
 		& > * { padding: $i * $gap * 0.5; }
 	}
-	.margin-gap\.#{$i}\! {
+	.alt-gap\.#{$i}\! {
 		margin: $i * $gap * -1 !important;
 		& > * { padding: $i * $gap * 0.5 !important; }
 	}
-	.margin-gap\.#{$i}rem {
+	.alt-gap\.#{$i}rem {
 		margin: $i * $gap * -1;
 		& > * { padding: $i * $gap * 0.5; }
 	}
-	.margin-gap\.#{$i}rem\! {
+	.alt-gap\.#{$i}rem\! {
 		margin: $i * -1rem !important;
 		& > * { padding: $i * 0.5rem !important; }
 	}
