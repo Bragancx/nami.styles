@@ -1,0 +1,8 @@
+@for $i from 0 through 50 {
+   .z-index\.#{$i} {
+      z-index: $i;
+   }
+   .z-index\.#{$i}\! {
+      z-index: $i !important;
+   }
+}
