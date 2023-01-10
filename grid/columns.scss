@@ -5,21 +5,19 @@ $columns-per-row: 12;
 $columns-gap: 0.25rem;
 $gaps: 8;
 
-// Row for one line.
+// Class for one line.
 .row {
 	display: flex;   
 	margin-inline: #{-$columns-gap};
-	flex: 1 1 0;
-	max-width: 100%;
+	flex: 1 1 100%;
 }
 
-// Row for multiple lines.
+// Class for multiple lines.
 .rows {
 	display: flex;
 	margin-inline: #{-$columns-gap};
 	flex-wrap: wrap;
-	flex: 1 1 0;
-	max-width: 100%;
+	flex: 1 1 100%;
 }
 
 // When gap is 0, no spacing between columns.
@@ -32,7 +30,6 @@ $gaps: 8;
 		& > div { padding: 0;}
 	}
 	
-	// Columns
 	// Columns
 	@for $i from 1 through $columns-per-row {
 		&.cols\.#{$i}, &.columns\.#{$i} {
@@ -66,7 +63,7 @@ $gaps: 8;
 // Every column class extend this.
 %default {
 	position: relative;
-	display: block;
+	// display: block;
 	width: 100%;
 	padding: $columns-gap;
 }
