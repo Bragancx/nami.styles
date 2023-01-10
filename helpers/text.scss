@@ -18,105 +18,115 @@ $line-height-multiplier: 0.25;
 $text-lines: 12;
 
 @each $value in (left,start,center,right,end,justify) {
-    .text\.#{$value},
-    .text-align\.#{$value} {
-        text-align: $value;
-    }
-    
-    @each $prefix in $prefixs {
-        @include media-breakpoint($prefix) {
-            .#{$prefix}\:text\.#{$value},
-            .#{$prefix}\:text-align\.#{$value} {
-                text-align: $value;
-            }
-        }
-    }
+	.text\.#{$value},
+	.text-align\.#{$value} {
+		text-align: $value;
+	}
 
+	.text\.#{$value}\!,
+	.text-align\.#{$value}\! {
+		text-align: $value !important;
+	}
+}
+@each $value in (left,start,center,right,end,justify) {
+	@each $prefix in $prefixs {
+		@include media-breakpoint($prefix) {
+			.#{$prefix}\:text\.#{$value},
+			.#{$prefix}\:text-align\.#{$value} {
+				text-align: $value;
+			}
+
+			.#{$prefix}\:text\.#{$value}\!,
+			.#{$prefix}\:text-align\.#{$value}\! {
+				text-align: $value !important;
+			}
+		}
+	}
 }
 
 .upper,
 .uppercase,
 .text-upper,
 .text-uppercase {
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 .lower,
 .lowercase,
 .text-lower,
 .text-lowercase {
-    text-transform: lowercase;
+	text-transform: lowercase;
 }
 .capitalize,
 .text-capitalize {
-    text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .small,
 .text-sm,
 .text-small,
 small {
-    font-size: #{1em - $text-size-offset};
+	font-size: #{1em - $text-size-offset};
 }
 .large,
 .text-lg,
 .text-large,
 large {
-    font-size: #{1em + $text-size-offset};
+	font-size: #{1em + $text-size-offset};
 }
 @for $i from 1 through $text-sizes {
-    .font-size\.#{$i},
-    .text-size\.#{$i} {
-        font-size: #{$i * $text-size-multiplier * 1rem};
-    }
-    .font-size\.#{$i}em,
-    .text-size\.#{$i}em {
-        font-size: #{$i * 1rem};
-    }
-    .font-size\.#{$i}rem,
-    .text-size\.#{$i}rem {
-        font-size: #{$i * 1rem};
-    }
+	.font-size\.#{$i},
+	.text-size\.#{$i} {
+		font-size: #{$i * $text-size-multiplier * 1rem};
+	}
+	.font-size\.#{$i}em,
+	.text-size\.#{$i}em {
+		font-size: #{$i * 1rem};
+	}
+	.font-size\.#{$i}rem,
+	.text-size\.#{$i}rem {
+		font-size: #{$i * 1rem};
+	}
 }
 
 @for $i from 1 through 9 {
-    .text-weight\.#{$i * 100} {
-        font-weight: #{$i * 100};
-    }
+	.text-weight\.#{$i * 100} {
+		font-weight: #{$i * 100};
+	}
 }
 
 @for $i from 0 through $line-heights {
-    .lh\.#{$i},
-    .line-height\.#{$i} {
-        line-height: #{$i * $line-height-multiplier};
-    }
+	.lh\.#{$i},
+	.line-height\.#{$i} {
+		line-height: #{$i * $line-height-multiplier};
+	}
 }
 
 .text-truncate {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 @for $i from 0 through $text-lines {
-    .text-lines\.#{$i} {
-        display: -webkit-box;
-        -webkit-line-clamp: $i;
-        -webkit-box-orient: vertical;
-        white-space: normal;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
+	.text-lines\.#{$i} {
+		display: -webkit-box;
+		-webkit-line-clamp: $i;
+		-webkit-box-orient: vertical;
+		white-space: normal;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
 }
 @each $prefix in (sm,md,lg,xl,xxl) {
-    @include media-breakpoint($prefix) {
-        @for $i from 0 through $text-lines {
-            .#{$prefix}\:text-lines\.#{$i} {
-                display: -webkit-box;
-                -webkit-line-clamp: $i;
-                -webkit-box-orient: vertical;
-                white-space: normal;
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-        }
-    }
+	@include media-breakpoint($prefix) {
+		@for $i from 0 through $text-lines {
+			.#{$prefix}\:text-lines\.#{$i} {
+				display: -webkit-box;
+				-webkit-line-clamp: $i;
+				-webkit-box-orient: vertical;
+				white-space: normal;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+		}
+	}
 }
