@@ -50,17 +50,17 @@ $margin-step: 0.25rem;
       .#{$prefix}m\.#{$i}#{$suffix},
       .#{$prefix}margin\.#{$i}#{$suffix} { margin: #{$i * $unit} !important; }
       
-      .#{$prefix}m\.#{$i}#{$suffix},
-      .#{$prefix}margin\.#{$i}#{$suffix} { margin: #{$i * $unit * -1} !important; }
+      .#{$prefix}m\.n#{$i}#{$suffix},
+      .#{$prefix}margin\.n#{$i}#{$suffix} { margin: #{$i * $unit * -1} !important; }
 
-      .#{$prefix}my\.n#{$i}#{$suffix},
-      .#{$prefix}margin-y\.n#{$i}#{$suffix},
-      .#{$prefix}mv\.n#{$i}#{$suffix},
-      .#{$prefix}margin-v\.n#{$i}#{$suffix},
-      .#{$prefix}margin-vertical\.n#{$i}#{$suffix},
-      .#{$prefix}mt\.n#{$i}#{$suffix},
-      .#{$prefix}margin-t\.n#{$i}#{$suffix},
-      .#{$prefix}margin-top\.n#{$i}#{$suffix} { margin-top: #{$i * $unit} !important; }
+      .#{$prefix}my\.#{$i}#{$suffix},
+      .#{$prefix}margin-y\.#{$i}#{$suffix},
+      .#{$prefix}mv\.#{$i}#{$suffix},
+      .#{$prefix}margin-v\.#{$i}#{$suffix},
+      .#{$prefix}margin-vertical\.#{$i}#{$suffix},
+      .#{$prefix}mt\.#{$i}#{$suffix},
+      .#{$prefix}margin-t\.#{$i}#{$suffix},
+      .#{$prefix}margin-top\.#{$i}#{$suffix} { margin-top: #{$i * $unit} !important; }
       
       .#{$prefix}my\.n#{$i}#{$suffix},
       .#{$prefix}margin-y\.n#{$i}#{$suffix},
@@ -71,14 +71,14 @@ $margin-step: 0.25rem;
       .#{$prefix}margin-t\.n#{$i}#{$suffix},
       .#{$prefix}margin-top\.n#{$i}#{$suffix} { margin-top: #{$i * $unit * -1} !important; }
 
-      .#{$prefix}mx\.n#{$i}#{$suffix},
-      .#{$prefix}margin-x\.n#{$i}#{$suffix},
-      .#{$prefix}mh\.n#{$i}#{$suffix},
-      .#{$prefix}margin-h\.n#{$i}#{$suffix},
-      .#{$prefix}margin-horizontal\.n#{$i}#{$suffix},
-      .#{$prefix}mr\.n#{$i}#{$suffix},
-      .#{$prefix}margin-r\.n#{$i}#{$suffix},
-      .#{$prefix}margin-right\.n#{$i}#{$suffix} { margin-right: #{$i * $unit} !important; }
+      .#{$prefix}mx\.#{$i}#{$suffix},
+      .#{$prefix}margin-x\.#{$i}#{$suffix},
+      .#{$prefix}mh\.#{$i}#{$suffix},
+      .#{$prefix}margin-h\.#{$i}#{$suffix},
+      .#{$prefix}margin-horizontal\.#{$i}#{$suffix},
+      .#{$prefix}mr\.#{$i}#{$suffix},
+      .#{$prefix}margin-r\.#{$i}#{$suffix},
+      .#{$prefix}margin-right\.#{$i}#{$suffix} { margin-right: #{$i * $unit} !important; }
       
       .#{$prefix}mx\.n#{$i}#{$suffix},
       .#{$prefix}margin-x\.n#{$i}#{$suffix},
@@ -89,14 +89,14 @@ $margin-step: 0.25rem;
       .#{$prefix}margin-r\.n#{$i}#{$suffix},
       .#{$prefix}margin-right\.n#{$i}#{$suffix} { margin-right: #{$i * $unit * -1} !important; }
       
-      .#{$prefix}my\.n#{$i}#{$suffix},
-      .#{$prefix}margin-y\.n#{$i}#{$suffix},
-      .#{$prefix}mv\.n#{$i}#{$suffix},
-      .#{$prefix}margin-v\.n#{$i}#{$suffix},
-      .#{$prefix}margin-vertical\.n#{$i}#{$suffix},
-      .#{$prefix}mb\.n#{$i}#{$suffix},
-      .#{$prefix}margin-b\.n#{$i}#{$suffix},
-      .#{$prefix}margin-bottom\.n#{$i}#{$suffix} { margin-bottom: #{$i * $unit} !important; }
+      .#{$prefix}my\.#{$i}#{$suffix},
+      .#{$prefix}margin-y\.#{$i}#{$suffix},
+      .#{$prefix}mv\.#{$i}#{$suffix},
+      .#{$prefix}margin-v\.#{$i}#{$suffix},
+      .#{$prefix}margin-vertical\.#{$i}#{$suffix},
+      .#{$prefix}mb\.#{$i}#{$suffix},
+      .#{$prefix}margin-b\.#{$i}#{$suffix},
+      .#{$prefix}margin-bottom\.#{$i}#{$suffix} { margin-bottom: #{$i * $unit} !important; }
 
       .#{$prefix}my\.n#{$i}#{$suffix},
       .#{$prefix}margin-y\.n#{$i}#{$suffix},
@@ -107,14 +107,14 @@ $margin-step: 0.25rem;
       .#{$prefix}margin-b\.n#{$i}#{$suffix},
       .#{$prefix}margin-bottom\.n#{$i}#{$suffix} { margin-bottom: #{$i * $unit * -1} !important; }
 
-      .#{$prefix}mx\.n#{$i}#{$suffix},
-      .#{$prefix}margin-x\.n#{$i}#{$suffix},
-      .#{$prefix}mh\.n#{$i}#{$suffix},
-      .#{$prefix}margin-h\.n#{$i}#{$suffix},
-      .#{$prefix}margin-horizontal\.n#{$i}#{$suffix},
-      .#{$prefix}ml\.n#{$i}#{$suffix},
-      .#{$prefix}margin-l\.n#{$i}#{$suffix},
-      .#{$prefix}margin-left\.n#{$i}#{$suffix} { margin-left: #{$i * $unit} !important; }
+      .#{$prefix}mx\.#{$i}#{$suffix},
+      .#{$prefix}margin-x\.#{$i}#{$suffix},
+      .#{$prefix}mh\.#{$i}#{$suffix},
+      .#{$prefix}margin-h\.#{$i}#{$suffix},
+      .#{$prefix}margin-horizontal\.#{$i}#{$suffix},
+      .#{$prefix}ml\.#{$i}#{$suffix},
+      .#{$prefix}margin-l\.#{$i}#{$suffix},
+      .#{$prefix}margin-left\.#{$i}#{$suffix} { margin-left: #{$i * $unit} !important; }
       
       .#{$prefix}mx\.n#{$i}#{$suffix},
       .#{$prefix}margin-x\.n#{$i}#{$suffix},
@@ -129,8 +129,10 @@ $margin-step: 0.25rem;
 
 @each $suffix, $unit in ('': $margin-step, 'rem': 1rem) {
    @include margins('',$suffix,$unit);
-   @each $prefix in (sm,md,lg,xl,xxl) {
-      @include media-breakpoint($prefix) {
+}
+@each $prefix in (sm,md,lg,xl,xxl) {
+   @include media-breakpoint($prefix) {
+      @each $suffix, $unit in ('': $margin-step, 'rem': 1rem) {
          @include margins($prefix + '\\:',$suffix,$unit);
       }
    }
