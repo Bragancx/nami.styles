@@ -1,0 +1,60 @@
+
+$prefixs: ('min-','','max');
+$values: ( 'auto': auto, 'inherit': inherit, '0': 0%, '12\\.5': 12.5%, '25': 25%, '37\\.5': 37.5%, '50': 50%, '62\\.5': 62.5%, '75': 75%, '87\\.5': 87.5%, '100': 100% );
+$pseudos: ( 'hover', 'focus', 'active' );
+$step: 0.25rem;
+
+@each $prefix in $prefixs {
+   @each $prop, $abrev in ('width' 'w', 'height' 'h') {
+      
+      @each $name, $value in $values {
+         .#{$prefix}#{$abrev}\.#{$name},
+         .#{$prefix}#{$prop}\.#{$name} {
+            #{$prefix}#{$prop}: $value !important;
+         }
+      }
+
+      @for $i from 0 through 12 {
+         .#{$prefix}#{$abrev}\.#{$i}rem,
+         .#{$prefix}#{$prop}\.#{$i}rem {
+            #{$prefix}#{$prop}: $i * 1rem !important;
+         }
+
+         .#{$prefix}#{$abrev}\.#{$i},
+         .#{$prefix}#{$prop}\.#{$i} {
+            #{$prefix}#{$prop}: $i * $step !important;
+         }
+      }
+
+      .#{$prefix}#{$abrev}\.screen,
+      .#{$prefix}#{$prop}\.screen {
+         #{$prefix}#{$prop}: #{'100v' + $abrev} !important;
+      }
+         
+      @each $pseudo in $pseudos {
+         @each $name, $value in $values {
+            .#{$prefix}#{$abrev}\.#{$name},
+            .#{$prefix}#{$prop}\.#{$name} {
+               #{$prefix}#{$prop}: $value !important;
+            }
+         }
+   
+         @for $i from 0 through 12 {
+            .#{$prefix}#{$abrev}\.#{$i}rem,
+            .#{$prefix}#{$prop}\.#{$i}rem {
+               #{$prefix}#{$prop}: $i * 1rem !important;
+            }
+   
+            .#{$prefix}#{$abrev}\.#{$i},
+            .#{$prefix}#{$prop}\.#{$i} {
+               #{$prefix}#{$prop}: $i * $step !important;
+            }
+         }
+   
+         .#{$prefix}#{$abrev}\.screen,
+         .#{$prefix}#{$prop}\.screen {
+            #{$prefix}#{$prop}: #{'100v' + $abrev} !important;
+         }
+      }
+   }
+}
