@@ -2,11 +2,11 @@
 
 $padding-step: 0.25rem;
 
-@mixin paddings($prefix,$suffix,$unit,$important) {
+@mixin paddings($prefix,$suffix,$unit) {
    @for $i from 0 through 6 {
       // PADDING
       .#{$prefix}p\.#{$i}#{$suffix},
-      .#{$prefix}padding\.#{$i}#{$suffix} { padding: #{$i * $unit} #{$important}; }
+      .#{$prefix}padding\.#{$i}#{$suffix} { padding: #{$i * $unit} !important; }
 
       .#{$prefix}py\.#{$i}#{$suffix},
       .#{$prefix}padding-y\.#{$i}#{$suffix},
@@ -15,7 +15,7 @@ $padding-step: 0.25rem;
       .#{$prefix}padding-vertical\.#{$i}#{$suffix},
       .#{$prefix}pt\.#{$i}#{$suffix},
       .#{$prefix}padding-t\.#{$suffix},
-      .#{$prefix}padding-top\.#{$i}#{$suffix} { padding-top: #{$i * $unit} #{$important}; }
+      .#{$prefix}padding-top\.#{$i}#{$suffix} { padding-top: #{$i * $unit} !important; }
 
       .#{$prefix}px\.#{$i}#{$suffix},
       .#{$prefix}padding-x\.#{$i}#{$suffix},
@@ -24,7 +24,7 @@ $padding-step: 0.25rem;
       .#{$prefix}padding-horizontal\.#{$i}#{$suffix},
       .#{$prefix}pr\.#{$i}#{$suffix},
       .#{$prefix}padding-r\.#{$suffix},
-      .#{$prefix}padding-right\.#{$i}#{$suffix} { padding-right: #{$i * $unit} #{$important}; }
+      .#{$prefix}padding-right\.#{$i}#{$suffix} { padding-right: #{$i * $unit} !important; }
       
       .#{$prefix}py\.#{$i}#{$suffix},
       .#{$prefix}padding-y\.#{$i}#{$suffix},
@@ -33,7 +33,7 @@ $padding-step: 0.25rem;
       .#{$prefix}padding-vertical\.#{$i}#{$suffix},
       .#{$prefix}pb\.#{$i}#{$suffix},
       .#{$prefix}padding-b\.#{$suffix},
-      .#{$prefix}padding-bottom\.#{$i}#{$suffix} { padding-bottom: #{$i * $unit} #{$important}; }
+      .#{$prefix}padding-bottom\.#{$i}#{$suffix} { padding-bottom: #{$i * $unit} !important; }
 
       .#{$prefix}px\.#{$i}#{$suffix},
       .#{$prefix}padding-x\.#{$i}#{$suffix},
@@ -42,17 +42,17 @@ $padding-step: 0.25rem;
       .#{$prefix}padding-horizontal\.#{$i}#{$suffix},
       .#{$prefix}pl\.#{$i}#{$suffix},
       .#{$prefix}padding-l\.#{$suffix},
-      .#{$prefix}padding-left\.#{$i}#{$suffix} { padding-left: #{$i * $unit} #{$important}; }
+      .#{$prefix}padding-left\.#{$i}#{$suffix} { padding-left: #{$i * $unit} !important; }
    }
 }
 
-@each $important in ('', '!important') {
-   @each $suffix, $unit, $important in ('' $padding-step, 'rem' 1rem, '' $padding-step, 'rem' 1rem ) {
-      @include paddings('',$suffix,$unit,$important);
-      @each $prefix in (sm,md,lg,xl,xxl) {
-         @include media-breakpoint($prefix) {
-            @include paddings($prefix + '\\:',$suffix,$unit,$important);
-         }
+@each $suffix, $unit in ('' $padding-step, 'rem' 1rem ) {
+   @include paddings('',$suffix,$unit);
+}
+@each $prefix in (sm,md,lg,xl,xxl) {
+   @include media-breakpoint($prefix) {
+      @each $suffix, $unit in ('' $padding-step, 'rem' 1rem ) {
+         @include paddings($prefix + '\\:',$suffix,$unit);
       }
    }
 }
